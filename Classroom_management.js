@@ -13,7 +13,7 @@ const students = [{
   name: 'silvia'
 }]
   
-const Names = [['pepe', 'juan', 'victor', 'Leo', 'francisco', 'carlos'], ['cecilia', 'ana', 'luisa', 'silvia', 'isabel', 'virginia']];
+const Names = [['pepe', 'juan', 'victor', 'leo', 'francisco', 'carlos'], ['cecilia', 'ana', 'luisa', 'silvia', 'isabel', 'virginia']];
 const availableGenders = ['male', 'female'];
 
 function calculateRandomNumber(min, max) {
@@ -40,8 +40,9 @@ function MenuAlumno(num) {
 
       break;
       //5- Eliminar un alumno aleatoriamente de la clase.
+      
       case 5: let indexDelete = calculateRandomNumber(0,students.length)
-              students.splice(indexDelete+1, indexDelete)
+              students.splice(indexDelete, 1)
       break;
       //6- Mostrar por consola todos los datos de los alumnos que son chicas.
       case 6: students.map(student => {
@@ -59,7 +60,7 @@ function MenuAlumno(num) {
                 girls++
               } else {boys++}
             })
-            console.log(girls +  boys)
+            console.log(girls ,  boys)
       break;
       //8- Mostrar true o false por consola si todos los alumnos de la clase son chicas.
       case 8: let IsGirls = true
@@ -125,20 +126,39 @@ function MenuAlumno(num) {
   
 //Hacer un while para que siempre este preguntando un numero y mostrando el menu//
 let MenuCountinuos = true;
+while(MenuCountinuos) {
 
-do {
   
-  console.log("Menu");
-  const NumFromUser = await AskNumberMenu()
-  if (!isNaN (NumFromUser) && 1<= NumFromUser && NumFromUser <=18){
+  console.log("\nListado de requisitos:",
+  "\n1- Mostrar en formato de tabla todos los alumnos.",
+  "\n2- Mostrar por consola la cantidad de alumnos que hay en clase.",
+  "\n3- Mostrar por consola todos los nombres de los alumnos.",
+  "\n4- Eliminar el último alumno de la clase.",
+  "\n5- Eliminar un alumno aleatoriamente de la clase.",
+  "\n6- Mostrar por consola todos los datos de los alumnos que son chicas.",
+  "\n7- Mostrar por consola el número de chicos y chicas que hay en la clase.",
+  "\n8- Mostrar true o false por consola si todos los alumnos de la clase son chicas.",
+  "\n9- Mostrar por consola los nombres de los alumnos que tengan entre 20 y 25 años.",
+  "\n10- Añadir un alumno nuevo con los siguientes datos: nombre aleatorio, edad aleatoria entre 20 y 50 años, género aleatorio, listado de calificaciones vacío.",
+  "\n11- Mostrar por consola el nombre de la persona más joven de la clase.",
+  "\n12- Mostrar por consola la edad media de todos los alumnos de la clase.",
+  "\n13- Mostrar por consola la edad media de las chicas de la clase.",
+  "\n14- Añadir nueva nota a los alumnos. Por cada alumno de la clase, tendremos que calcular una nota de forma aleatoria(número entre 0 y 10) y añadirla a su listado de notas.",
+  "\n15- Ordenar el array de alumnos alfabéticamente según su nombre.")
+
+
+  const NumFromUser = parseInt (await AskNumberMenu())
+  
+  
+  if (!isNaN (NumFromUser) && 1<= NumFromUser && NumFromUser <=15){
     MenuAlumno(NumFromUser)
-    console.log(calculateRandomNumber(1,100))
+    
   }
     else{
       MenuCountinuos = false
     }
 
-} while(MenuCountinuos)
+} 
   
 
 
